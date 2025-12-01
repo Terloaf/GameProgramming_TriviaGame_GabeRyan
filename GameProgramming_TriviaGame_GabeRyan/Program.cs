@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,18 @@ namespace GameProgramming_TriviaGame_GabeRyan
     internal class Program
     {
         static string Username = " ";
+        static bool PlayerProfile = true;
 
         static int QuestionNum;
         static int CorrectCount = 0;
         static int WrongCount = 0;
         static int QuestionOffset = 1;
+        static int Score = 100;
+        static int WrongMultiplier = 10;
+        static int MinimumCharLength = 1;
+        static int ChoicesLength = 0;
+        static int GuessAsInt;
+        static string Answer;
 
         List<string> QuestionAnswers = new List<string>();
 
@@ -54,24 +62,71 @@ namespace GameProgramming_TriviaGame_GabeRyan
         {
 
 
-            PlayerInfo();
-            for(QuestionNum = 0; QuestionNum < Questions.Length; QuestionNum++)
+            while(PlayerProfile == true)
+            {
+                PlayerInfo();
+                if(Username.Length >= MinimumCharLength)
+                {
+                    PlayerProfile = false;
+                }
+            }
+                
+
+            if (Username == "Easter")
+            {
+                Console.WriteLine("╔═════════════════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║ Heres An Egg.                                                                       ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                        ▒▒▒                                          ║");
+                Console.WriteLine("║                                      ▒▒▒▒▒▒▒                                        ║");
+                Console.WriteLine("║                                    ▒▒░░▒▒▒▒▒▒▒                                      ║");
+                Console.WriteLine("║                                   ▒▒░░▒▒▒▒▒▒▒▒▒                                     ║");
+                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
+                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒░░▒                                    ║");
+                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒░░░▒                                    ║");
+                Console.WriteLine("║                                   ▒▒▒▒▒▒▒▒░░░▒▒                                     ║");
+                Console.WriteLine("║                                     ▒▒▒▒▒▒▒▒▒                                       ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                     It's Easter-ish.║");
+                Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════════════╝");
+
+                Environment.Exit(1);
+                
+            }
+            for (QuestionNum = 0; QuestionNum < Questions.Length; QuestionNum++)
             {
                 
                 ShowHud();
                 
                 Console.WriteLine(Questions[QuestionNum]);
 
-                for(int ChoicesLength = 0; ChoicesLength < Choices.GetLength(1); ChoicesLength++)
+                for(ChoicesLength = 0; ChoicesLength < Choices.GetLength(1); ChoicesLength++)
                 {
                     Console.WriteLine(ChoicesLength + QuestionOffset + ". " + Choices[QuestionNum, ChoicesLength]);
                 }
                 Console.WriteLine("Answer: ");
-                string Answer = Console.ReadLine();
+                
+               
+                while (Answer != "1" || Answer != "2"|| Answer != "3" || Answer != "4")
+                {
+                    Answer = Console.ReadLine();
 
+                    if(Answer == "1" || Answer == "2" || Answer == "3" || Answer == "4")
+                    {
+                        GuessAsInt = int.Parse(Answer);
+                        break;
+                    }
+                    
+                    Console.WriteLine("Please Add A Valid Answer");
+                }
+            
                 
 
-                int GuessAsInt = int.Parse(Answer);
                 if (GuessAsInt == Answers[QuestionNum])
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -81,40 +136,25 @@ namespace GameProgramming_TriviaGame_GabeRyan
                     Console.ReadKey();
                     Console.Clear();
                 }
+
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("Wrong!");
                     WrongCount += 1;
+                    Score -= WrongCount * WrongMultiplier;
                     Console.ResetColor();
                     Console.ReadKey();
                     Console.Clear();
                 }
+                
 
             }
                 
             if(CorrectCount == Questions.Length)
             {
-                Console.WriteLine("╔═════════════════════════════════════════════════════════════════════════════════════╗");
-                Console.WriteLine("║ Congrats On Getting Everything Correct! Heres A Certificate That Proves You Did It. ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                        ▒▒▒                                          ║");
-                Console.WriteLine("║                                      ▒▒▒▒▒▒▒                                        ║");
-                Console.WriteLine("║                                    ▒▒▒▒▒▒▒▒▒▒▒                                      ║");
-                Console.WriteLine("║                                   ▒▒▒▒▒▒▒▒▒▒▒▒▒                                     ║");
-                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
-                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
-                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
-                Console.WriteLine("║                                   ▒▒▒▒▒▒▒▒▒▒▒▒▒                                     ║");
-                Console.WriteLine("║                                     ▒▒▒▒▒▒▒▒▒                                       ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════════════╝");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("You Got Everything Correct!!!");
             }
 
 
@@ -128,10 +168,12 @@ namespace GameProgramming_TriviaGame_GabeRyan
 
         static void ShowHud()
         {
+            
             Console.WriteLine("Name: " + Username);
             Console.WriteLine("Question: " + (QuestionNum + QuestionOffset));
             Console.WriteLine("Correct Answers: " + CorrectCount);
             Console.WriteLine("Wrong Answers: " + WrongCount);
+            Console.WriteLine("Score: " + Score + "%");
             Console.ReadKey();
             Console.Clear();
 
