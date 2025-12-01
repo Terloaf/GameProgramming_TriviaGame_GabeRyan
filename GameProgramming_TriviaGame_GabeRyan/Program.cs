@@ -24,11 +24,11 @@ namespace GameProgramming_TriviaGame_GabeRyan
             "What Language Does Unity Use",
             "What Question Is This?",
             "What KeyWord Skips A Method?",
-            "",
-            "Question7",
-            "Question8",
-            "Question9",
-            "Question10"
+            "What Do You Call A Number That Isnt Assigned To Any Variable?",
+            "What Colour Do Numbers Show Up As In Visual Studio C#",
+            "How Many Fingers Does The Average Person Have On One Hand?",
+            "What Does || Mean In C#?",
+            "What Should You Always Use To Make Sure You Dont Lose Your Projects?"
 
         };
 
@@ -40,18 +40,20 @@ namespace GameProgramming_TriviaGame_GabeRyan
             { "Int", "String", "Char", "Bool", },
             { "And", "Then", "Or", "Nothing", },
             { "Python", "Java", "C#","Lua", },
-            { "End", "Return", "Skip","Stop", },
             { "1", "2", "3","4", },
-            { "1", "2", "3","4", },
-            { "1", "2", "3","4", },
-            { "1", "2", "3","4", },
-            { "1", "2", "3","4", },
-            { "1", "2", "3","4", },
+            { "Break", "Return", "Stop","End", },
+            { "Normal", "Floating", "Default","Magic", },
+            { "Red", "Green", "Blue","Orange", },
+            { "3", "6", "5","10", },
+            { "Or", "And", "But","Then", },
+            { "Word", "Memory", "VisualStudio","GitHub", },
         };
 
 
         static void Main(string[] args)
         {
+
+
             PlayerInfo();
             for(QuestionNum = 0; QuestionNum < Questions.Length; QuestionNum++)
             {
@@ -66,21 +68,54 @@ namespace GameProgramming_TriviaGame_GabeRyan
                 }
                 Console.WriteLine("Answer: ");
                 string Answer = Console.ReadLine();
+
+                
+
                 int GuessAsInt = int.Parse(Answer);
                 if (GuessAsInt == Answers[QuestionNum])
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("Correct!");
                     CorrectCount += 1;
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("Wrong!");
                     WrongCount += 1;
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    Console.Clear();
                 }
 
             }
                 
-            
+            if(CorrectCount == Questions.Length)
+            {
+                Console.WriteLine("╔═════════════════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║ Congrats On Getting Everything Correct! Heres A Certificate That Proves You Did It. ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                        ▒▒▒                                          ║");
+                Console.WriteLine("║                                      ▒▒▒▒▒▒▒                                        ║");
+                Console.WriteLine("║                                    ▒▒▒▒▒▒▒▒▒▒▒                                      ║");
+                Console.WriteLine("║                                   ▒▒▒▒▒▒▒▒▒▒▒▒▒                                     ║");
+                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
+                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
+                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
+                Console.WriteLine("║                                   ▒▒▒▒▒▒▒▒▒▒▒▒▒                                     ║");
+                Console.WriteLine("║                                     ▒▒▒▒▒▒▒▒▒                                       ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("║                                                                                     ║");
+                Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════════════╝");
+            }
 
 
 
@@ -110,15 +145,6 @@ namespace GameProgramming_TriviaGame_GabeRyan
             Console.Clear();
         }
 
-        static void QuestionStorage()
-        {
-            for(int AnswerRows = 0; AnswerRows < Choices.GetLength(0); AnswerRows++)
-            {
-
-            }
-
-
-        }
     }
     
 }
