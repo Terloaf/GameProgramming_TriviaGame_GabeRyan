@@ -19,8 +19,8 @@ namespace GameProgramming_TriviaGame_GabeRyan
 
         static string[] Questions =
             {
-            "Question1",
-            "Question2",
+            "What Variable Handles Numbers?",
+            "",
             "Question3",
             "Question4",
             "Question5",
@@ -35,7 +35,19 @@ namespace GameProgramming_TriviaGame_GabeRyan
         static int[] Answers = { 1, 1, 3, 4, 2, 4, 2, 3, 1, 4};
 
 
-
+        static string[,] Choices = new string[,]
+        {
+            { "Int", "String", "Char","Bool", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+            { "1", "2", "3","4", },
+        };
 
 
         static void Main(string[] args)
@@ -43,9 +55,15 @@ namespace GameProgramming_TriviaGame_GabeRyan
             PlayerInfo();
             for(QuestionNum = 0; QuestionNum < Questions.Length; QuestionNum++)
             {
+                
                 ShowHud();
                 
                 Console.WriteLine(Questions[QuestionNum]);
+
+                for(int ChoicesLength = 0; ChoicesLength < Choices.GetLength(1); ChoicesLength++)
+                {
+                    Console.WriteLine(ChoicesLength + QuestionOffset + ". " + Choices[QuestionNum, ChoicesLength]);
+                }
                 Console.WriteLine("Answer: ");
                 string Answer = Console.ReadLine();
                 int GuessAsInt = int.Parse(Answer);
@@ -94,7 +112,10 @@ namespace GameProgramming_TriviaGame_GabeRyan
 
         static void QuestionStorage()
         {
-            
+            for(int AnswerRows = 0; AnswerRows < Choices.GetLength(0); AnswerRows++)
+            {
+
+            }
 
 
         }
