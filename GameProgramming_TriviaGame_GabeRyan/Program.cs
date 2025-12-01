@@ -23,8 +23,6 @@ namespace GameProgramming_TriviaGame_GabeRyan
         static int GuessAsInt;
         static string Answer;
 
-        List<string> QuestionAnswers = new List<string>();
-
         static string[] Questions =
             {
             "What Variable Handles Humbers?",
