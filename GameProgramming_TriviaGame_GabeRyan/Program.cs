@@ -19,12 +19,12 @@ namespace GameProgramming_TriviaGame_GabeRyan
 
         static string[] Questions =
             {
-            "What Variable Handles Numbers?",
+            "What Variable Handles Humbers?",
+            "What Does && Mean In C#?",
+            "What Language Does Unity Use",
+            "What Question Is This?",
+            "What KeyWord Skips A Method?",
             "",
-            "Question3",
-            "Question4",
-            "Question5",
-            "Question6",
             "Question7",
             "Question8",
             "Question9",
@@ -37,10 +37,10 @@ namespace GameProgramming_TriviaGame_GabeRyan
 
         static string[,] Choices = new string[,]
         {
-            { "Int", "String", "Char","Bool", },
-            { "1", "2", "3","4", },
-            { "1", "2", "3","4", },
-            { "1", "2", "3","4", },
+            { "Int", "String", "Char", "Bool", },
+            { "And", "Then", "Or", "Nothing", },
+            { "Python", "Java", "C#","Lua", },
+            { "End", "Return", "Skip","Stop", },
             { "1", "2", "3","4", },
             { "1", "2", "3","4", },
             { "1", "2", "3","4", },
