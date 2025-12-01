@@ -8,15 +8,61 @@ namespace GameProgramming_TriviaGame_GabeRyan
 {
     internal class Program
     {
-        static bool Playing = false;
         static string Username = " ";
+
+        static int QuestionNum;
+        static int CorrectCount = 0;
+        static int WrongCount = 0;
+        static int QuestionOffset = 1;
+
+        List<string> QuestionAnswers = new List<string>();
+
+        static string[] Questions =
+            {
+            "Question1",
+            "Question2",
+            "Question3",
+            "Question4",
+            "Question5",
+            "Question6",
+            "Question7",
+            "Question8",
+            "Question9",
+            "Question10"
+
+        };
+
+        static int[] Answers = { 1, 1, 3, 4, 2, 4, 2, 3, 1, 4};
+
+
+
+
+
         static void Main(string[] args)
         {
             PlayerInfo();
-            while (Playing == true)
+            for(QuestionNum = 0; QuestionNum < Questions.Length; QuestionNum++)
             {
                 ShowHud();
+                
+                Console.WriteLine(Questions[QuestionNum]);
+                Console.WriteLine("Answer: ");
+                string Answer = Console.ReadLine();
+                int GuessAsInt = int.Parse(Answer);
+                if (GuessAsInt == Answers[QuestionNum])
+                {
+                    Console.Write("Correct!");
+                    CorrectCount += 1;
+                }
+                else
+                {
+                    Console.Write("Wrong!");
+                    WrongCount += 1;
+                }
+
             }
+                
+            
 
 
 
@@ -29,14 +75,29 @@ namespace GameProgramming_TriviaGame_GabeRyan
 
         static void ShowHud()
         {
-            Console.Write("Name: " + Username);
+            Console.WriteLine("Name: " + Username);
+            Console.WriteLine("Question: " + (QuestionNum + QuestionOffset));
+            Console.WriteLine("Correct Answers: " + CorrectCount);
+            Console.WriteLine("Wrong Answers: " + WrongCount);
+            Console.ReadKey();
+            Console.Clear();
+
+
         }
 
         static void PlayerInfo()
         {
             Console.WriteLine("Enter Name: ");
             Username = Console.ReadLine();
-            Playing = true;
+            Console.Clear();
+        }
+
+        static void QuestionStorage()
+        {
+            
+
+
         }
     }
+    
 }
