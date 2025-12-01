@@ -97,32 +97,7 @@ namespace GameProgramming_TriviaGame_GabeRyan
             }
                 
 
-            if (Username == "Easter")
-            {
-                Console.WriteLine("╔═════════════════════════════════════════════════════════════════════════════════════╗");
-                Console.WriteLine("║ Heres An Egg.                                                                       ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                        ▒▒▒                                          ║");
-                Console.WriteLine("║                                      ▒▒▒▒▒▒▒                                        ║");
-                Console.WriteLine("║                                    ▒▒░░▒▒▒▒▒▒▒                                      ║");
-                Console.WriteLine("║                                   ▒▒░░▒▒▒▒▒▒▒▒▒                                     ║");
-                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒                                    ║");
-                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒▒░░▒                                    ║");
-                Console.WriteLine("║                                  ▒▒▒▒▒▒▒▒▒▒▒░░░▒                                    ║");
-                Console.WriteLine("║                                   ▒▒▒▒▒▒▒▒░░░▒▒                                     ║");
-                Console.WriteLine("║                                     ▒▒▒▒▒▒▒▒▒                                       ║");
-                Console.WriteLine("║                                                                                     ║");
-                Console.WriteLine("║                                                                     It's Easter-ish.║");
-                Console.WriteLine("╚═════════════════════════════════════════════════════════════════════════════════════╝");
-
-                
-                
-            }
+           
             for (QuestionNum = 0; QuestionNum < Questions.Length; QuestionNum++)
             {
                 
@@ -176,10 +151,20 @@ namespace GameProgramming_TriviaGame_GabeRyan
 
             }
                 
-            if(CorrectCount == Questions.Length)
+            while(CorrectCount == Questions.Length)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("You Got Everything Correct!!!");
+                Console.WriteLine("You Got Everything Correct!!!");
+                Console.WriteLine("Do You Wish To Exit?: Y/N");
+                string YorN = Console.ReadLine();
+                if(YorN == "Y" || YorN == "y")
+                {
+                    Environment.Exit(1);
+                }
+                else
+                {
+                    continue;
+                }
             }
 
 
